@@ -9,10 +9,8 @@ package jptvr18;
  *
  * @author pupil
  */
-public class JPTVR18 {
-    public static void main(String[] args) {
-        App app = new App();
-        app.run();
+class App {
+    public void run(){
+        System.out.print("Hello");
     }
-    
 }
