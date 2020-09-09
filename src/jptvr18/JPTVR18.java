@@ -5,12 +5,14 @@
  */
 package jptvr18;
 
+import java.io.IOException;
+
 /**
  *
  * @author pupil
  */
 public class JPTVR18 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         App app = new App();
         app.run();
     }

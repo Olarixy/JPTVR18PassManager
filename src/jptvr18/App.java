@@ -6,6 +6,9 @@
 package jptvr18;
 
 import Entity.Recource;
+import classes.NewRecource;
+import classes.SaveToFile;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -15,8 +18,16 @@ import java.util.Scanner;
  * @author pupil
  */
 class App {
-    private List<Resource> listResources = new ArrayList<>();
-    public void run(){
+    private List<Recource> listResources = new ArrayList<>();
+    private SaveToFile saveToFile = new SaveToFile();
+
+    public App() {
+        listResources.addAll(this.saveToFile.loadListRecources());
+    }
+    
+    
+    
+    public void run() throws IOException{
         System.out.println("---Менеджер паролей---");
         String repeat = "r";
         do{
@@ -35,6 +46,11 @@ class App {
                     Recource recource = new Recource();
                     recource.setName("ivkhk");
                     recource.setUrl("http://kutsehariduskeskus.ee");
+                    recource.setLogin("admin");
+                    recource.setPassword("123123");
+                    NewRecource newRecource = new NewRecource();
+                    listResources.add(newRecource.createRecource());
+                    saveToFile.saveRecource(listResources);
                     break;
                 case 2:
                     System.out.println("Выбрана задача 2 ");
@@ -44,6 +60,6 @@ class App {
                     }
                     break;
             }
-        } while("q".equals(repeat));    
+        } while(!"q".equals(repeat));    
     }
 }
